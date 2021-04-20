@@ -1,16 +1,16 @@
-export class Sorter {
-  constructor(public collection: /*TODO: fix me! */) {}
+import { NumbersCollection } from './NumbersCollection';
 
-  sorter(): void {
+export class Sorter {
+  constructor(public collection: NumbersCollection) {}
+
+  sort(): void {
     // const length = this.collection.length;
     const { length } = this.collection;
 
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < length - i; j++) {
-        if (this.collection[j] > this.collection[j + 1]) {
-          const leftHand = this.collection[j];
-          this.collection[j] = this.collection[j + 1];
-          this.collection[j + 1] = leftHand;
+        if (this.collection.compare(j, j + 1)) {
+          this.collection.swap(j, j + 1);
         }
       }
     }
